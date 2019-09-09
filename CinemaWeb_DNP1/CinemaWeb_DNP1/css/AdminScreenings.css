@@ -1,0 +1,42 @@
+﻿.card {
+    margin-top: 10px;
+    background: #20252D;
+    line-height: 1.5em;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.37);
+    box-shadow: 0px 4px 10px 0px rgba(1, 3, 12, 0.33);
+}
+
+.details {
+    padding: 1em;
+}
+
+
+.product-title, .bold-orange, .sizes, .colors {
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.time {
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    color: #ff9f1a;
+}
+
+.bold-orange {
+    color: #ff9f1a;
+}
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+    margin-bottom: 15px;
+}
+
+.product-title {
+    margin-top: 0;
+}
+
+.calendar td{
+    color: #090B0D;
+    background-color: white;
+}

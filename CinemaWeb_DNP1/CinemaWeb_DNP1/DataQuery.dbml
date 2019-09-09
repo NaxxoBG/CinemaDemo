@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cinemaDB" Class="DataQueryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cinemaweb.database.windows.net;Initial Catalog=cinemaDB;Persist Security Info=True;User ID=cinemauser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cinemaDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.screening" Member="screenings">
+    <Type Name="screening">
+      <Column Name="screening_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="movie_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="start" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="screening_ticket" Member="tickets" ThisKey="screening_id" OtherKey="screen_id" Type="ticket" />
+      <Association Name="movie1_screening" Member="movie" ThisKey="movie_id" OtherKey="movie_id" Type="movie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.seat" Member="seats">
+    <Type Name="seat">
+      <Column Name="seat_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="row" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="seat_ticket" Member="tickets" ThisKey="seat_id" OtherKey="seat_id" Type="ticket" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ticket" Member="tickets">
+    <Type Name="ticket">
+      <Column Name="ticket_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="screen_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="seat_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="screening_ticket" Member="screening" ThisKey="screen_id" OtherKey="screening_id" Type="screening" IsForeignKey="true" />
+      <Association Name="seat_ticket" Member="seat" ThisKey="seat_id" OtherKey="seat_id" Type="seat" IsForeignKey="true" />
+      <Association Name="user_ticket" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users" Member="users">
+    <Type Name="user">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[user]" Member="user1" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="pass" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="Char(30) NOT NULL" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Type="System.String" DbType="Char(20) NOT NULL" CanBeNull="false" />
+      <Column Name="admin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="user_ticket" Member="tickets" ThisKey="user_id" OtherKey="user_id" Type="ticket" />
+      <Association Name="preset_user" Member="preset" ThisKey="user_id" OtherKey="userid" Type="preset" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.preset" Member="presets">
+    <Type Name="preset">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userid" AutoSync="Always" Type="System.Int32" DbType="Int NOT NULL IDENTITY" CanBeNull="false" />
+      <Association Name="preset_user" Member="users" ThisKey="userid" OtherKey="user_id" Type="user" />
+    </Type>
+  </Table>
+  <Table Name="dbo.movie" Member="movies">
+    <Type Name="movie">
+      <Column Name="movie_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="genre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="overview" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="release_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="poster" Type="System.String" DbType="VarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="images" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="videos" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="backdrop" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="vote_average" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="budget" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="cast" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="movie1_screening" Member="screenings" ThisKey="movie_id" OtherKey="movie_id" Type="screening" />
+    </Type>
+  </Table>
+</Database>

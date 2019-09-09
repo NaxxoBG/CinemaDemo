@@ -1,0 +1,66 @@
+﻿ *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+body {
+    font-weight: 600;
+    color: #919191;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+        .cinema {
+            margin: 20px auto;
+            max-width: 550px;
+        }
+
+
+        .seats {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+
+        .seat {
+            display: flex;
+            flex: 0 0 14.28571428571429%;
+            padding: 5px;
+            position: relative;
+        }
+
+.seat:nth-child(5) {
+      margin-right: 14.28571428571429%;
+}
+
+.details {
+    padding: 1em;
+}
+
+
+.product-title, .bold-orange, .sizes, .colors {
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.time {
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    color: #ff9f1a;
+}
+
+.bold-orange {
+    color: #ff9f1a;
+}
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+    margin-bottom: 15px;
+}
+
+.product-title {
+    margin-top: 0;
+}
+
+
+

@@ -1,0 +1,12 @@
+﻿body {
+    font-weight: 600;
+    color: #919191;
+    font-family: 'Raleway', sans-serif;
+}
+
+h2, hr {
+    color: orange;
+    border-color:orange;
+}
+
+

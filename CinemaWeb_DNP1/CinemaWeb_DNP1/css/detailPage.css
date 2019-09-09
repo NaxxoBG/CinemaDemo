@@ -1,0 +1,45 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+img {
+    width: 100%;
+    height: auto;
+}
+
+ul {
+    padding: 0 0 0 0;
+    margin: 0 0 40px 0;
+}
+
+    ul li {
+        list-style: none;
+        margin-bottom: 10px;
+    }
+
+.details {
+    padding: 1em;
+}
+
+
+.product-title, .bold-orange, .sizes, .colors {
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.time {
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    color: #ff9f1a;
+}
+
+.bold-orange {
+    color: #ff9f1a;
+}
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+    margin-bottom: 15px;
+}
+
+.product-title {
+    margin-top: 0;
+}
+
